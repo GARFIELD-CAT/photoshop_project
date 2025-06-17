@@ -3,8 +3,15 @@
 
 namespace MyPhotoshop
 {
-    public class Pixel
+    public struct Pixel
     {
+        public Pixel(double r, double g, double b)
+        {
+            this.r = this.g = this.b = 0;
+            this.R = r;
+            this.G = g;
+            this.B = b;
+        }
         public double Check(double value) {
             if (value < 0 || value > 1)
             {
