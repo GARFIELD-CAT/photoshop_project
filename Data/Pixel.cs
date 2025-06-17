@@ -14,6 +14,14 @@ namespace MyPhotoshop
             return value;
         }
 
+        public static double Trim(double value)
+        {
+            if (value < 0) return 0;
+            if (value > 1) return 1;
+
+            return value;
+        }
+
         double r;
         public double R
         {
