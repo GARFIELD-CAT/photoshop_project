@@ -46,13 +46,12 @@
     <Compile Include="Filters\IFilter.cs" />
     <Compile Include="Data\Convertors.cs" />
 	<Compile Include="Data\Pixel.cs" />
-    <Compile Include="Filters\LighteningFilter.cs" />
-	<Compile Include="Filters\GrayscalerFilter.cs" />
 	<Compile Include="Filters\PixelFilter.cs" />
 	<Compile Include="Filters\IParameters.cs" />
 	<Compile Include="Filters\LighteningParameters.cs" />
 	<Compile Include="Filters\ParametrizedFilter.cs" />
 	<Compile Include="Filters\EmptyParameters.cs" />
+	<Compile Include="Filters\TransformFilter.cs" />  
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
