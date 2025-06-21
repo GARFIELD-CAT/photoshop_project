@@ -14,6 +14,18 @@ namespace MyPhotoshop
                 "Осветление/затемнение",
                 (original, parameters) => original * parameters.Coefficient
             ));
+
+            window.AddFilter(new TransformFilter(
+                "Отразить по горизонтали",
+                size => size,
+                (point, size) => new Point(size.Width - point.X - 1, point.Y)
+             ));
+            window.AddFilter(new TransformFilter(
+                "Повернуть против часовой стр",
+                size => new Size(size.Height, size.Width),
+                (point, size) => new Point(point.Y, point.X)
+             ));
+
             window.AddFilter(new PixelFilter<EmptyParameters>(
                 "50 оттенков серого / СПб скай",
                 (original, parameters) => {
