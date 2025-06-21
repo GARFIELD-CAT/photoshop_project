@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 
 namespace MyPhotoshop
 {
@@ -11,7 +10,7 @@ namespace MyPhotoshop
         {
             return new[]
             {
-                new ParameterInfo { Name="Eujk", MaxValue=360, MinValue=0, Increment=5, DefaultValue=0 }
+                new ParameterInfo { Name="”гол", MaxValue=360, MinValue=0, Increment=5, DefaultValue=0 }
             };
         }
 

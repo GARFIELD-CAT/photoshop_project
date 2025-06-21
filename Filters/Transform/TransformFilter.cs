@@ -6,16 +6,14 @@ namespace MyPhotoshop
     public class TransformFilter<TParameters> : ParametrizedFilter<TParameters>
         where TParameters : IParameters, new()
     {
-        Func<Size, TParameters, Size> sizeTransform;
-        Func<Point, Size, TParameters, Point?> pointTransform;
+        ITransformer<TParameters> transformer;
         string name;
 
 
-        public TransformFilter(string name, Func<Size, TParameters, Size> sizeTransform, Func<Point, Size, TParameters, Point?> pointTransform)
+        public TransformFilter(string name, ITransformer<TParameters> transformer)
         {
             this.name = name;
-            this.sizeTransform = sizeTransform;
-            this.pointTransform = pointTransform;
+            this.transformer = transformer;
         }
 
         public override string ToString()
@@ -26,14 +24,15 @@ namespace MyPhotoshop
         public override Photo Process(Photo original, TParameters parameters)
         {
             var oldSize = new Size(original.width, original.height);
-            var newSize = sizeTransform(oldSize, parameters);
-            var result = new Photo(newSize.Width, newSize.Height);
+            transformer.Prepare(oldSize, parameters);
 
-            for (int x = 0; x < newSize.Width; x++)
-                for (int y = 0; y < newSize.Height; y++)
+            var result = new Photo(transformer.ResultSize.Width, transformer.ResultSize.Height);
+
+            for (int x = 0; x < result.width; x++)
+                for (int y = 0; y < result.height; y++)
                 {
                     var point = new Point(x, y);
-                    var oldPoint = pointTransform(point, oldSize, parameters);
+                    var oldPoint = transformer.MapPoint(point);
 
                     if (oldPoint.HasValue)
                     {

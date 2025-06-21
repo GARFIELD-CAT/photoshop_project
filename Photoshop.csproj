@@ -53,6 +53,8 @@
 	<Compile Include="Filters\EmptyParameters.cs" />
 	<Compile Include="Filters\Transform\TransformFilter.cs" />
 	<Compile Include="Filters\Transform\RotationParameters.cs" />
+	<Compile Include="Filters\Transform\ITransformer.cs" />
+	<Compile Include="Filters\Transform\RotateTransformer.cs" />  
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
